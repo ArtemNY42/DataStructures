@@ -1,2 +1,2 @@
 # DataStructures
- Console program which help me to learn data structures
+ Console program which help to learn data structures
