@@ -7,6 +7,7 @@ namespace DataStructure
         static DataStructures.Classes.LinkedList<int> linkedList = new DataStructures.Classes.LinkedList<int>();
         static DoubleLinkedList<int> doubleLinkedList = new DoubleLinkedList<int>();
         static SimpleStack<int> stack = new SimpleStack<int>();
+        static DataStructures.Classes.Queue<int> queue = new DataStructures.Classes.Queue<int>();
         static void Main(string[] args)
         {
             //Test lists
@@ -19,12 +20,13 @@ namespace DataStructure
             Console.WriteLine("1. Односвязный список / Linked List");
             Console.WriteLine("2. Двусвязный список / Double linked list");
             Console.WriteLine("3. Стек / Stack");
+            Console.WriteLine("4. Очередь / Queue");
             Console.WriteLine();
             Console.Write("Выберите пункт списка / Select a list item ");
             char input = Console.ReadKey().KeyChar;
             Console.WriteLine();
             while(true){
-                if(input != '1' && input != '2' && input != '3'){
+                if(input != '1' && input != '2' && input != '3' && input != '4'){
                     Console.Write("Выберите корректный пункт списка / Select a correct list item ");
                     input = Console.ReadKey().KeyChar;
                     Console.WriteLine();
@@ -41,6 +43,9 @@ namespace DataStructure
                     break;
                 case '3':
                     ShowStackMenu();
+                    break;
+                case '4':
+                    ShowQueueMenu();
                     break;
             }
             Console.ReadKey();
@@ -193,6 +198,46 @@ namespace DataStructure
                 case '4':
                     stack.Peek();
                     ShowStackMenu();
+                    break;
+            }
+        }
+        static void ShowQueueMenu(){
+            Console.Clear();
+            Console.WriteLine("Очередь / Queue");
+            Console.WriteLine();
+            Console.WriteLine("1. В главное меню / To the main menu");
+            Console.WriteLine("2. Заполнить очередь / Fill the queue");
+            Console.WriteLine("3. Удалить элемент / Delete element");
+            Console.WriteLine();
+            Console.WriteLine("Количество элементов: " + queue.Count);
+            Console.WriteLine("Все элементы / All elements: ");
+            foreach(var element in queue) Console.WriteLine(element);
+
+            Console.Write("Выберите пункт списка / Select a list item ");
+            char input = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+            while(true){
+                if(input != '1' && input != '2' && input != '3'){
+                    Console.Write("Выберите корректный пункт списка / Select a correct list item ");
+                    input = Console.ReadKey().KeyChar;
+                    Console.WriteLine();
+                } else {
+                    break;
+                }
+            }
+
+            switch(input){
+                case '1':
+                    ShowMainPage();
+                    break;
+                case '2':
+                    queue.Clear();
+                    for(int i = 0; i < 10; i++) queue.Enqueue(i);
+                    ShowQueueMenu();
+                    break;
+                case '3':
+                    queue.Dequeue();
+                    ShowQueueMenu();
                     break;
             }
         }
