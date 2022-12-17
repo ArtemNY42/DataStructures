@@ -6,6 +6,7 @@ namespace DataStructure
     {
         static DataStructures.Classes.LinkedList<int> linkedList = new DataStructures.Classes.LinkedList<int>();
         static DoubleLinkedList<int> doubleLinkedList = new DoubleLinkedList<int>();
+        static SimpleStack<int> stack = new SimpleStack<int>();
         static void Main(string[] args)
         {
             //Test lists
@@ -17,11 +18,13 @@ namespace DataStructure
             Console.WriteLine();
             Console.WriteLine("1. Односвязный список / Linked List");
             Console.WriteLine("2. Двусвязный список / Double linked list");
+            Console.WriteLine("3. Стек / Stack");
+            Console.WriteLine();
             Console.Write("Выберите пункт списка / Select a list item ");
             char input = Console.ReadKey().KeyChar;
             Console.WriteLine();
             while(true){
-                if(input != '1' && input != '2'){
+                if(input != '1' && input != '2' && input != '3'){
                     Console.Write("Выберите корректный пункт списка / Select a correct list item ");
                     input = Console.ReadKey().KeyChar;
                     Console.WriteLine();
@@ -35,6 +38,9 @@ namespace DataStructure
                     break;
                 case '2':
                     ShowDoubleLinkedListMenu();
+                    break;
+                case '3':
+                    ShowStackMenu();
                     break;
             }
             Console.ReadKey();
@@ -142,6 +148,51 @@ namespace DataStructure
                     }
                     doubleLinkedList.Delete(intData);
                     ShowDoubleLinkedListMenu();
+                    break;
+            }
+        }
+        static void ShowStackMenu(){
+            Console.Clear();
+            Console.WriteLine("Стек / Stack");
+            Console.WriteLine();
+            Console.WriteLine("1. В главное меню / To the main menu");
+            Console.WriteLine("2. Заполнить стек / Fill stack");
+            Console.WriteLine("3. Получить с удалением / Get with deleting");
+            Console.WriteLine("4. Получить без удаления / Get without deleting");
+            Console.WriteLine();
+            Console.WriteLine("Количество элементов: " + stack.Count);
+            Console.WriteLine("Все элементы / All elements: ");
+            foreach(var element in stack) Console.WriteLine(element);
+
+            Console.Write("Выберите пункт списка / Select a list item ");
+            char input = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+            while(true){
+                if(input != '1' && input != '2' && input != '3' && input != '4'){
+                    Console.Write("Выберите корректный пункт списка / Select a correct list item ");
+                    input = Console.ReadKey().KeyChar;
+                    Console.WriteLine();
+                } else {
+                    break;
+                }
+            }
+
+            switch(input){
+                case '1':
+                    ShowMainPage();
+                    break;
+                case '2':
+                    stack.Clear();
+                    for(int i = 0; i < 10; i++) stack.Push(i);
+                    ShowStackMenu();
+                    break;
+                case '3':
+                    stack.Pop();
+                    ShowStackMenu();
+                    break;
+                case '4':
+                    stack.Peek();
+                    ShowStackMenu();
                     break;
             }
         }
